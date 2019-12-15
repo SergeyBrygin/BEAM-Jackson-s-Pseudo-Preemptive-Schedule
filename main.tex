@@ -1,0 +1,682 @@
+\documentclass{beamer}
+%
+% Choose how your presentation looks.
+%
+% For more themes, color themes and font themes, see:
+% http://deic.uab.es/~iblanes/beamer_gallery/index_by_theme.html
+%
+\mode<presentation>
+{
+  \usetheme{default}      % or try Darmstadt, Madrid, Warsaw, ...
+  \usecolortheme{default} % or try albatross, beaver, crane, ...
+  \usefonttheme{default}  % or try serif, structurebold, ...
+  \setbeamertemplate{navigation symbols}{}
+  \setbeamertemplate{caption}[numbered]
+} 
+
+
+\usepackage[english,russian]{babel}
+\usepackage[utf8x]{inputenc}
+
+\title[Your Short Title]{Об оценках обобщенной размерности Хаусдорфа.}
+\institute{ }
+\author{Брыгин Сергей 621 гр.}
+\date{ }
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+\section{Доклад}
+
+
+% 
+%
+%
+\begin{frame}{Предварительные определения и утверждения}
+    $(X, \Omega, h)$ - размерностное пространство, если:
+    \begin{enumerate}
+        \item  X - бесконечное множество
+        \item $\varnothing \in \Omega$ - семейство подмножеств $X$, являющееся его покрытием
+        \item $h : \Omega \to [0, \infty]$; $h(\varnothing) = 0$
+    \end{enumerate}
+\end{frame}
+
+%  Первый функционал мы будем называть функционалом Хаусдорфа пространства $(X, \Omega, h)$;
+% он является внешней мерой на $X$ 
+% 
+% Второй же функционал был определен в несколько меньшей общности в статье одного из авторов.
+% Без дополнительных предположений о размерностном пространстве он не является внешней мерой;
+% поэтому мы будем называть его функционалом Хаусдорфа-Лебега.
+\begin{frame}{Предварительные определения и утверждения}
+    Рассмотрим два функционала $\mu_H (E)$ и $\mu_{LH} (E)$ вида:
+    $$\mu(E) = \inf{\sum{h(\Delta_i)}}$$
+    где
+    \begin{enumerate}
+        \item[$\bullet$] $\mu_H$ : $\inf$ распространяется на все счетные покрытия множества $E$
+        \item[$\bullet$] $\mu_{LH}$ : $\inf$ распространяется на все счетные и дизъюнктные покрытия множества $E$
+    \end{enumerate}
+\end{frame}
+
+% Простейшим случаем совпадения двух функционалов при любой функции $h$ является случай, 
+% когда выполнено следующее условие:
+% каждое счетное семейство элементов  $\Omega$ содержит дизъюнктное подсемейство с  тем же объединением.
+%
+% Этим свойством обладает, в частности, семейство $\Omega_*$ всех  диадических кубов в $\mathbb{R}^n$, 
+% где под диадическим кубом понимается любое произведение из $n$ 
+% полуоткрытых справа интервалов (ребер) с началом каждого из них в одной из точек вида $\frac{l_i}{2^k}$ ,
+% а с концом, соответственно, в точке $\frac{l_i + 1}{2^k}$
+\begin{frame}{Предварительные определения и утверждения}
+      $\Omega_*$ - семейство всех  диадических кубов в $\mathbb{R}^n$.
+      
+      Диадический куб есть следующее произведение
+      $\overset{n}{ \underset{i = 1}{ \prod } } [ \frac{l_i}{2^k}; \frac{l_i + 1}{2^k} )$ 
+      
+      где $\{l_i\}_{i=1}^n$ - произвольные целые числа
+      
+      $k \in \mathbb{N}$ - ранг куба
+\end{frame}
+
+% В работе показано, что интересующие нас свойства функционала Хаусдорфа-Лебега справедливы 
+% при фиксированных $X$ и $\Omega$ для произвольной функции $h$
+% тогда и только тогда, когда  выполнено указанное выше условие
+\begin{frame}{Предварительные определения и утверждения}
+      \textbf{Теорема 1.} Следующие условия эквивалентны:
+      \begin{enumerate}
+        \item Для всякой функции $h: \Omega \to [0, \infty]$ со свойством 
+              $h(\varnothing) = 0$ функционал $\mu_{LH}$ является внешней мерой. 
+        \item Функционалы $\mu_H$ и $\mu_{LH}$ совпадают  при любой функции 
+              $h: \Omega \to [0, \infty]$ со свойством $h(\varnothing) = 0$.
+        \item Выполнены следующие два утверждения:
+              \begin{enumerate}
+                    \item Семейство $\Omega$ диадически упорядочено отношением включения, 
+                                     то есть для любых $A, B \in \Omega$ , выполнено $A \subset B $
+                                     или $ A \supset B$ или $A \bigcap B = \varnothing$.
+                    \item Семейство $\Omega$ удовлетворяет условию обрыва возрастающих цепей, 
+                                     то есть каждая возрастающая по включению последовательность элементов
+                                     семейства $\Omega$ конечна.
+              \end{enumerate}
+        \item $\Omega$ удовлетворяет условию про существование дизъюнктного подсемейства.
+    \end{enumerate}
+\end{frame}
+
+% 
+% 
+% 
+\begin{frame}{Предварительные определения и утверждения}
+    \textbf{Доказательство.} $4 \Rightarrow 2 \Rightarrow 1$ ясно. Покажем $1 \Rightarrow 3$.
+    \newline
+      
+    Пусть 3.1 не верно: $\exists A, B \in \Omega: A \not \subset B, B \not \subset A, 
+    A \bigcap B \ne \varnothing$. Положим $h(\varnothing) = 0, h(A) = h(B) = 1$
+    и $h(E) = 3$ $\forall E \in \Omega$ . 
+      
+    Тогда $\mu_{LH} (A) = \mu_{LH} (B) = 1, \mu_{LH} (A \bigcup B) \geq 3 $ 
+    и, значит, $\mu_{LH}$ -  не внешняя мера.
+    \newline
+      
+    Пусть 3.2 не верно: $\exists \{A_n\}_{n=1}^{\infty} : A_n \subset A_{n+1}$. 
+    Положим $h(\varnothing) = 0, h(A_n) = \frac{1}{n}, h(E) = 3$
+    $\forall E \in \Omega$ .
+    
+    Тогда $\mu_{LH} (A_n) = 0;
+    \mu_{LH} (\overset{\infty}{\underset{n=1}{\bigcup}} A_n ) \geq 3 $,
+    $\mu_{LH}$ - не внешняя мера.
+\end{frame}
+
+% 
+% 
+% 
+\begin{frame}{Предварительные определения и утверждения}
+    \textbf{Доказательство.} Покажем $3 \Rightarrow 4$.
+    \newline
+      
+    Рассмотрим $\{\Delta_i\}$ - произвольное счетное подсемейство элементов $\Omega$.
+    
+    По 3.2 можем взять для каждого $\Delta_i$ максимальный элемент $G_i$,
+    которые либо совпадают, либо дизъюнктны.
+    
+    $\bigcup \Delta_i = \bigcup G_i$ чтд.
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Основные определения %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%  Перейдем к основным определениям работы. 
+% Заметим, что для любого размерностного пространства $(X,\Omega,h)$,
+% удовлетворяющего эквивалентным условиям теоремы 1, 
+% совокупность всех непустых элементов семейства $\Omega$  
+%разбиватся на непересекающиеся классы следующим естественным образои. 
+% Класс $\Omega_1$ состоит из всех максимальных (по включению) 
+% элементов семейства $\Omega$, 
+% класс $\Omega_2$ - из всех максимальных элементов семейства 
+% $\Omega {\setminus}{ \Omega_1}$ и т.д. 
+% Элементы класса $\Omega_k$ мы будем также называть в дальнейшем 
+% элементами $\Omega$ ранга $k$ и писать $rg(\Delta)=k$ при 
+% $\Delta\in\Omega_k$. 
+%
+% В общем случае ранг элемента является порядковым числом (ординалом), 
+% но далее мы будем   рассматривать лишь однородные размерностные пространства
+% (ОРП), в которых ранг любого элемента заведомо натурален.
+\begin{frame}{Основные определения}
+    $\{\Omega_i\}$ - естественное разбиаение на непересекающиеся классы, где
+    
+    $\Omega_1$ максимальные по включению элементы $\Omega$,
+    
+    $\Omega_2$ максимальные по включению элементы $\Omega {\setminus}{ \Omega_1}$ и тд.
+    
+    $rg(\Delta)=k$ при $\Delta\in\Omega_k$, где $k$ - ранг элемента $\Delta$.
+\end{frame}
+
+% 
+% 
+% 
+\begin{frame}{Основные определения}
+    \textbf{Определение 1.} Пространство $(X, \Omega, h)$ есть
+    однородное размерностное пространство (ОРП),
+    если   выполнены следующие условия:
+    \begin{enumerate}
+        \item 
+            Условия $\Omega$-однородности, состоящие в том, 
+            что:
+            \begin{enumerate}
+                \item  
+                     Семейство $\Omega$ имеет вид 
+                     $\Omega = \{\varnothing\} {\bigcup }\overset{\infty}{\underset{k=1}{\bigcup}} \Omega_k$ ,
+                     где при каждом целом $k \geq 1$ семейство $\Omega_k$
+                     состоит из непустых множеств,
+                     образующих разбиение $X$.
+                \item
+                    Для каждого $E \in \Omega_k$ и каждого $l > k$
+                    семейство 
+                    $\Omega_l(E) = \{P \in \Omega_l : P \bigcap E \neq \varnothing\}$
+                    образует  разбиение $E$ ,
+                    причем количество элементов $| \Omega_l (E) |$ 
+                    этого разбиения конечно и больше единицы.
+                    Количество элементов множества $\Omega_1$
+                    предпологается конечным (возможно равным единице)
+                    или счетным.
+                \item
+                    Найдется константа $C_\Omega$ такая,
+                    что при любых целых $k \geq 1$ и $l > k$ и любых 
+                    $E_1, E_2 \in \Omega_k$
+                    справедливо неравенство
+                    $\frac{|\Omega_l(E_1)|}{|\Omega_l(E_2)|} < C_\Omega $.
+            \end{enumerate}
+    \end{enumerate}
+\end{frame}
+
+% 
+% 
+% 
+\begin{frame}{Основные определения}
+    \begin{enumerate}
+    \setcounter{enumi}{1}
+        \item 
+            Условия $h$-однородности, состоящие в том, что:
+            \begin{enumerate}
+                \item 
+                    $0 < h(E) \leq 1$ при любом непустом
+                    $E \in \Omega $.
+                \item
+                    $\underset{k \to \infty} {\lim}
+                    \sup \{ h(E) : E \in \Omega_k \} = 0$.
+                \item
+                    Существует константа $C_h$ такая,
+                    что для любого целого $k \geq 1$ и для любых 
+                    $E_1 , E_2 \in \Omega_k$,
+                    справедливо неравенство 
+                    $ \frac{h(E_1)}{h(E_2)} < C_h $.
+            \end{enumerate}
+    \end{enumerate}
+\end{frame}
+
+% 
+% Поскольку семейства $\Omega_k$ однозначно восстанавливаются по 
+% семейству $\Omega$, мы будем также использовать сокращенную запись
+% 
+\begin{frame}{Основные определения}
+    $\mathfrak{A} = (X, \Omega, h)$ - фиксированное ОРП, где
+    
+    $\Omega = \{\varnothing\} {\bigcup }\overset{\infty}{\underset{k=1}{\bigcup}} \Omega_k$.
+    Далее обозначим $\Omega = \{ \Omega_k \}_{k = 1}^\infty$.
+    
+    Пусть $0 < \alpha \in \mathbb{R}$.
+    
+    $\forall E \subset X, \forall n \in \mathbb{N}$
+    рассмотрим $(X, \{ \Omega_k \}_{k = n}^\infty , h^\alpha)$, тогда
+    
+    $\mu_H (E) := \mu_n^\alpha (E) $
+\end{frame}
+
+% 
+% 
+% 
+\begin{frame}{Основные определения}
+    \textbf{Определение 2.} 
+    $ \mu_{\mathfrak{A}}^\alpha (E) \mathrel{\stackrel{\rm def}=}
+    \underset{n \to \infty}{\lim}
+    \mu_n^\alpha (E)$ будем называть внешней $\alpha -$мерой Хаусдорфа произвольного множества $E \subset X$
+    (допускается значения предела равное $\infty$).
+    
+    Размерностью Хаусдорфа множества $E \subset X$
+    мы будем называть (возможно равную бесконечности) величину
+    $
+    \dim_H (E) =
+    \dim_H(E, \mathfrak{A}) \mathrel{\stackrel{\rm def}=}
+    \inf \{ \alpha > 0 : \mu_{\mathfrak{A}}^\alpha (E) = 0 \}
+    $.
+\end{frame}
+
+% 
+% 
+% 
+\begin{frame}{Основные определения}
+    ${ \sigma}=\{ k_n \}_{n = 1}^\infty : k_i < k_{i+1}$ (далее
+    обозначаем $\sigma \in \uparrow (\mathbb{N})$).
+    \newline
+    
+    Соответственно положим ${\Omega_\sigma}=\{ \Omega_{k_n} \}_{n=1}^\infty$. Тогда  
+    ${\mathfrak{A}_\sigma}=(X, \Omega_\sigma , h) - $  ОРП. 
+    Для каждого $E \subset X$
+    положим 
+    $\mbox{Dim}_H (\mathfrak{A}, E) =
+    \{ \dim_H (\mathfrak{A}_\sigma, E) : \sigma \in \uparrow
+    (\mathbb{N}) \}$.
+\end{frame}
+
+% 
+% 
+% 
+\begin{frame}{Основные определения}
+    \textbf{Определение 3.} Множество $ \mbox{Dim}_H (\mathfrak{A}, E) $ -  спектром Хаусдорфа-Безиковича множества $E$ в пространстве $\mathfrak{A}$.
+    
+    В случае, если $ E=X $ множество
+    $ \mbox{Dim}_H (\mathfrak{A}, E) $
+    обозначим через $ \mbox{Dim}_H (\mathfrak{A})$.
+    \newline
+     
+    Обозначим через $
+    \mathcal{N}_l (E) =
+    | \Omega_l (E) | =
+    card \{ \Delta \in \Omega_l : \Delta \bigcap E \neq 
+    {\varnothing}\} 
+    $.
+    
+    Пусть
+    $M_l = 
+    \sup \{ h(\Delta) : \Delta \in \Omega_l \}$,
+    $m_l =
+    \inf \{ h(\Delta) : \Delta \in \Omega_l \}$.
+    
+    Тогда
+    $
+    \frac{M_l}{m_l} \leq C_h
+    $, в силу определения ОРП.
+\end{frame}
+
+% Заметим, что, в силу однородности рассматриваемого пространства, 
+% значение $d(\mathfrak{A}, E)$ при всех $E \in \Omega$
+% одинаково; мы будем называть это значение верхней размерностью 
+% пространства $\mathfrak{A}$.
+% 
+% Ясно, что в случае, если $\mathfrak{A}$ есть пространство
+% $\mathbb{R}^n$, вместе с совокупностью  $\Omega$ всех 
+% диадических кубов и длиной стороны куба, взятой в качестве
+% значения $h$, то определенная выше размерность Минковского
+% совпадает с обычной фрактальной размерностью множества $E$ в
+% $\mathbb{R}^n$, а  величина $\dim_H (\mathfrak{A}, E)$ - с его
+% размерностью Хаусдорфа.
+%
+% В общем случае справедливо неравенство $\dim_H (\mathfrak{A}, E)
+% \leq d(\mathfrak{A}, E)$, а множество $\mbox{Dim}_H
+% (\mathfrak{A},E)$,  как легко видеть, лежит между величинами
+% $\dim_H (\mathfrak{A}, E)$ и $d(\mathfrak{A}, E)$. 
+% В частности, если размерности Хаусдорфа и Минковского множества
+% $E$ совпадают, то его спектр Хаусдофа-Безиковича состоит из одной
+% точки. 
+\begin{frame}{Основные определения}
+    Положим 
+    $d(E) =
+    d(\mathfrak{A}, E) \mathrel{\stackrel{\rm def}=}
+    \underset{l \to \infty}{\overline{\lim}}
+    \frac{\ln{\mathcal{N}_l (E)}}{\ln{\frac{1}
+    {m_l}}}
+    $ - размерностью Минковского множества $E$ 
+    в пространстве $\mathfrak{A}$.
+    \newline
+    
+    $\dim_H (\mathfrak{A}, E) \leq
+    \mbox{Dim}_H (\mathfrak{A},E) \leq
+    d(\mathfrak{A}, E)$
+\end{frame}
+
+% Заметим, что конечный индекс компактности имеет, очевидно, пространство
+% $\mathbb{R}^n$ с совокупностью  $\Omega$ всех диадических кубов. 
+% Этот пример показывает, что требование убывания  последовательности
+% $\{\Delta_i\}_{i=1}^\infty \subset \Omega$
+% в пункте 2 определения 4 нельзя заменить  требованием убывания последовательности
+% $\{\aleph(\Delta_i)\}_{i=1}^\infty $.
+\begin{frame}{Основные определения}
+    \textbf{Определение 4.} Пространство
+    $(X,\Omega, h)$
+    имеет конечный индекс компактности,
+    если $\exists n \in \mathbb{N} : \forall \Delta \in \Omega
+    \ \exists \aleph (\Delta)$
+    являющееся объединением самого $\Delta$
+    и не более, чем $n$ других элементов $\Omega$ того же ранга,
+    что и $\Delta$,так, что выполнены следующие условия:
+    \begin{enumerate}
+        \item 
+            Для любых $\Delta_1 \subset \Delta_2$
+            из $\Omega$ выполнено
+            $\aleph (\Delta_1) \subset \aleph(\Delta_2) $
+        \item 
+            Для любой убывающей последовательности
+            $\{\Delta_i\}_{i=1}^\infty \subset \Omega$
+            выполнено
+            $\overset{\infty}{\underset{i = 1}{\bigcap}}
+            \aleph (\Delta_i) \neq \varnothing$ 
+        \item 
+            Для каждого $\Delta \in \Omega$
+            справедливо условие
+            $
+            \underset{l \to \infty}{\lim}
+            \frac{ | \tilde{\Omega}_l(\Delta) | }
+            { | \Omega_l(\Delta) | } =
+            1
+            $,
+            где
+            $
+            \tilde{\Omega}_l(\Delta) =
+            \{\Delta' \in  \Omega_l : 
+            \aleph (\Delta') \subset \Delta \}
+            $
+    \end{enumerate}
+\end{frame}
+
+% 
+% Сформулируем следующую основную теорему.
+% 
+\begin{frame}{Основные определения}
+    \textbf{Теорема 2.} Пусть
+    $\mathfrak{A} = (X, \Omega, h) - $ ОРП
+    с конечным индексом компактности и верхней размерностью
+    $d > 0$.
+    \newline
+    
+    Пусть $J \subset [0, d] - $ компакт.
+    \newline
+    
+    Тогда существуют $\sigma  \in \uparrow (\mathbb{N}) $
+    и $E \subset X$ такие, что $\mbox{Dim}_H (\mathfrak{A_\sigma}, E) = J$.
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Вспомогательные построения %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% 
+% 
+% 
+\begin{frame}{Вспомогательные построения}
+    \textbf{Лемма 1.} Пусть выполнены условия теоремы 2, 
+    $k \in \mathbb{N}$, $\mathfrak{E} \subset \Omega_k$,
+    $card (\mathfrak{E}) < \infty$. Пусть
+    $\beta < \alpha  $ - два числа из
+    $(0, d(\mathfrak{A})).$
+    Тогда существуют натуральное число $l > k$, натуральное число $\mathcal{N}$
+    и множество $G = G(\alpha, \beta, \mathfrak{E})$, лежащее в $\Omega_l$,
+    такие, что
+    \begin{enumerate}
+        \item 
+            Для каждого $\Delta ' \in G$ существует
+            $\Delta \in \mathfrak{E}$ такое, что 
+            $\Delta' \in \Omega_l (\Delta)$.
+        \item 
+            Для каждого $\Delta \in \mathfrak{E}$
+            выполнено:
+            $card( G(\alpha, \beta, \mathfrak{E})
+            \bigcap \Omega_l (\Delta)) = \mathcal{N}$.
+        \item 
+            Для каждого $\Delta' \in 
+            G(\alpha, \beta, \mathfrak{E}) $
+            найдется $\Delta \in \mathfrak{E}$ такое,
+            что $\aleph (\Delta')
+            \subset \Delta$.
+        \item 
+            Для каждого $\Delta \in \mathfrak{E}$
+            справедливо неравенство
+            $\underset{\Delta' \in
+            G(\alpha, \beta, \mathfrak{E}) \bigcap
+            \Omega_l (\Delta)}{\sum}
+            h^\beta(\Delta')   > 1$.
+        \item 
+            Справедливо неравенство $\underset{\Delta' \in
+            G}{\sum}
+            h^\alpha(\Delta')   < 1$.
+    \end{enumerate}
+\end{frame}
+
+% 
+% 
+% 
+\begin{frame}{Вспомогательные построения}
+    \textbf{Замечание к лемме 1.} Множество 
+    $G(\alpha, \beta, \mathfrak{E})$
+    определенное в Лемме 1 неоднозначно
+    (далее обозначаем это символом 
+    $G \in \mathfrak{J} (\alpha, \beta, \mathfrak{E})$).
+    \newline
+    
+    Заметим, в частности, что если
+    $G \in \mathfrak{J} (\alpha, \beta, \mathfrak{E})$ и
+    $G_1 \in \mathfrak{J} (\alpha_1, \beta_1, G)$
+    то
+    $G_1 \in \mathfrak{J} (\alpha_1, \beta_1, \mathfrak{E})$.
+\end{frame}
+
+% (такие $\mathfrak{E}_n$ существуют, разумеется, не для всех $\sigma$).
+% 
+% Утверждение леммы остается в силе, если вместо равенства 
+% $\mathfrak{E}_n =
+% G(\alpha_n, \beta_n, \mathfrak{E}_{n - 1})$
+% выполнено условие
+% $\mathfrak{E}_n \in \mathfrak{J} (\alpha_n, \beta_n, \mathfrak{E}_{n-1})$.
+\begin{frame}{Вспомогательные построения}
+    \textbf{Лемма 2.} Пусть $\mathfrak{A}$ -ОРП с конечным
+    индексом компактности,
+    $\sigma  \in \uparrow (\mathbb{N}), \ \alpha_n > \beta_n > 0 - $
+    последовательности чисел из промежутка $(0, d(\mathfrak{A}) ) : 
+    \beta_n - \alpha_n \to 0$.
+    
+    Пусть $k_0 = 1, \mathfrak{E}_{0} - $
+    произвольное конечное подсемейство в $\Omega_1, 
+    \mathfrak{E}_{n} - $
+    конечные подсемейства в $\Omega_{k_n}$,
+    причем $\mathfrak{E}_n = 
+    G(\alpha_n, \beta_n, \mathfrak{E}_{n-1}), n \geq 1$.
+    
+    Пусть $E_n - $ объединение всех множеств,
+    входящих в $\mathfrak{E}_n$,
+    
+    $ E = 
+    \overset{\infty}{\underset{i=1}{\bigcap}}
+    E_n$.
+    \newline
+    
+    Тогда 
+    $\dim_H (\mathfrak{A}_\sigma, E)=
+    \underset{n \to \infty}{\underline{\lim}}\alpha_n$
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Доказательство теоремы 2 %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Доказательство теоремы 2}
+    $\mathfrak{E}_0 \subset \Omega_1$ - произвольное конечно;
+    $\alpha_n \in (0, d( \mathfrak{A} )) $, 
+    с множесвтом частичных пределов $J$;
+    $\beta_n = \alpha_n - \frac{\alpha_n}{n}$.
+    
+    По лемме 1 по индукции найдем 
+    $k_n \in \  \uparrow(\mathbb{N})$ и
+    $\mathfrak{E}_n \subset \Omega_{k_n} : \mathfrak{E}_n =
+    G(\alpha_n, \beta_n, \mathfrak{E}_{n-1}) \ \forall n \in \mathbb{N}$.
+    
+    Тогда, для любой подпоследовательности
+    $\{ k_{n_j} \}_{j = 1}^\infty$ имеем
+    $\mathfrak{E}_{n_j} \in
+    \mathfrak{J} (\alpha_{n_j}, \beta_{n_j}, \mathfrak{E}_{n_{j - 1}})$,
+    а значит по лемме 2
+    $\dim_H(  \mathfrak{A}_{\{ k_{n_j} \}},
+    \overset{\infty}{
+        \underset{j = 1}{
+            \bigcap
+        }
+    }
+    E_{n_j}
+    ) =
+    \underset{j \to \infty}{\underline{\lim}} \ \alpha_{n_j}
+    $.
+    
+    $\forall n_j$ выполнено
+    $
+    \overset{\infty}{
+        \underset{j = 1}{
+            \bigcap
+        }
+    }
+    E_{n_j} = E
+    $;
+    множество же нижних пределов всех
+    подпоследовательностей последовательности
+    совпадает с $J$.
+
+    Итак
+    $\mbox{Dim}_H 
+    (\mathfrak{A}_{\{ k_{n} \}} , E) =
+    J$.
+    
+    Теорема доказана.
+\end{frame}
+
+% 
+% 
+% 
+\begin{frame}{Доказательство теоремы 2}
+    $\mathfrak{E}_0 \subset \Omega_1$ - произвольное конечно;
+    $\alpha_n \in (0, d( \mathfrak{A} )) $, 
+    с множесвтом частичных пределов $J$;
+    $\beta_n = \alpha_n - \frac{\alpha_n}{n}$.
+    
+    По лемме 1 по индукции найдем 
+    $k_n \in \  \uparrow(\mathbb{N})$ и
+    $\mathfrak{E}_n \subset \Omega_{k_n} : \mathfrak{E}_n =
+    G(\alpha_n, \beta_n, \mathfrak{E}_{n-1}) \ \forall n \in \mathbb{N}$.
+    
+    Тогда, для любой подпоследовательности
+    $\{ k_{n_j} \}_{j = 1}^\infty$ имеем
+    $\mathfrak{E}_{n_j} \in
+    \mathfrak{J} (\alpha_{n_j}, \beta_{n_j}, \mathfrak{E}_{n_{j - 1}})$,
+    а значит по лемме 2
+    $\dim_H(  \mathfrak{A}_{\{ k_{n_j} \}},
+    \overset{\infty}{
+        \underset{j = 1}{
+            \bigcap
+        }
+    }
+    E_{n_j}
+    ) =
+    \underset{j \to \infty}{\underline{\lim}} \ \alpha_{n_j}
+    $.
+    
+    $\forall n_j$ выполнено
+    $
+    \overset{\infty}{
+        \underset{j = 1}{
+            \bigcap
+        }
+    }
+    E_{n_j} = E
+    $;
+    множество же нижних пределов всех
+    подпоследовательностей последовательности
+    совпадает с $J$.
+
+    Итак
+    $\mbox{Dim}_H 
+    (\mathfrak{A}_{\{ k_{n} \}} , E) =
+    J$.
+    
+    Теорема доказана.
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Замечание к теореме 2 %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Теорема 2}
+    \textbf{Замечание к теореме 2.} Построенное в теореме 2  $(E,
+    \{
+    \Delta \bigcap E:
+    \Delta \in \mathfrak{E}_n
+    \}_{n = 1}^\infty 
+    ,
+    h_E)
+    $,
+    где $h_E (\Delta \bigcap E)  \mathrel{\stackrel{\rm def}=}
+    h(\Delta)$,
+    является ОРП,
+    которое можно, тем самым, рассматривать как
+    подпространство исходного пространства $\mathfrak{A}$.
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Замечание к теореме 2 %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Теорема 2}
+    Теорема 2 означает, что спектр Безиковича-Хаусдорфа у
+    подпространства произвольного фиксированного ОРП $\mathfrak{A}$
+    с конечным индексом компактности
+    может быть проивольным замкнутым множеством,
+    лежащим в $[0, d(\mathfrak{A})]$.
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Литература}
+
+\begin{frame}{Литература}
+    \begin{enumerate}
+    	\item 
+    	    Г.А. Леонов, А.А.  Флоринский. Об оценках обобщенной размерности Хаусдорфа. MSC 28C99, УДК 517.987, Вестник СПбГУ. Сер. 1, Т. , 2019 , вып. 3
+    \end{enumerate}
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%% ДОП СЛАЙДЫ %%
+
+% Внешняя мера
+\begin{frame}{Дополнительные утверждения}
+    Пусть $X$ - фиксированное множество.
+    Внешней мерой называется функция $f : 2^X \to [0, \infty]$ такая, что
+    \begin{enumerate}
+        \item[$\bullet$] $f(\varnothing) = 0$
+        \item[$\bullet$] $\forall A \subseteq X$,
+        $\forall A_n \subset X, n \geq 1,
+        A \subseteq \overset{\infty}{ \underset{n = 1}{ \bigcup } } A_n :
+        f(A) \leq \overset{\infty}{ \underset{n = 1}{ \sum } } f(A_n)$
+    \end{enumerate}
+\end{frame}
+
+\end{document}
+
